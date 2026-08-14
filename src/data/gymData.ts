@@ -41,6 +41,14 @@ export interface Testimonial {
   image?: string;
 }
 
+export interface GymVideo {
+  id: string;
+  title: string;
+  description: string;
+  videoUrl: string;
+  thumbnail: string;
+}
+
 export interface GymDetails {
   brandName: string;
   brandDescriptor: string;
@@ -56,8 +64,8 @@ export const gymDetails: GymDetails = {
   brandName: "F7 FITNESS",
   brandDescriptor: "BY PRASAD KONDA",
   address: "Plot No. 7, High-Performance Avenue, Jubilee Hills, Hyderabad, TS, 500033",
-  phone: "+91 99999 77777",
-  whatsapp: "https://wa.me/919999977777?text=Hi%20F7%20Fitness!%20I%20am%20interested%20in%20joining.",
+  phone: "+91 99081 91614",
+  whatsapp: "https://wa.me/919908191614?text=Hi%20F7%20Fitness!%20I%20am%20interested%20in%20joining.",
   email: "info@f7fitness.in",
   openingHours: [
     "Monday – Saturday: 5:30 AM – 10:00 PM",
@@ -224,5 +232,36 @@ export const testimonials: Testimonial[] = [
     name: "Abhishek Sen",
     role: "Member since 2024",
     quote: "Prasad Konda’s coaching philosophy is elite. My squat form and deadlift strength have skyrocketed under his direction. If you want results, this is the gym.",
+  }
+];
+
+export const gymVideos: GymVideo[] = [
+  {
+    id: "v1",
+    title: "F7 Gym Tour",
+    description: "A premium walkthrough of our state-of-the-art strength floor, training rigs, and coaching environment.",
+    videoUrl: "/videos/video1.MOV",
+    thumbnail: "/images/facilities_floor.png"
+  },
+  {
+    id: "v2",
+    title: "Compound & Strength Training",
+    description: "Elite strength training floor with premium barbell rigs, squat racks, and coaching guidance.",
+    videoUrl: "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0227e339f37c355ab09000a6e0337fb&profile_id=139&oauth2_token_id=57447761",
+    thumbnail: "/images/program_strength.png"
+  },
+  {
+    id: "v3",
+    title: "Olympic Weightlifting",
+    description: "Professional weightlifting setup for compound movements, clean and jerk, and snatch execution.",
+    videoUrl: "https://player.vimeo.com/external/538902581.sd.mp4?s=d001602492f1f0a514d3f3f5b08c903fb5cdbe2e&profile_id=165&oauth2_token_id=57447761",
+    thumbnail: "/images/hero_gym_poster.png"
+  },
+  {
+    id: "v4",
+    title: "High-Intensity Conditioning",
+    description: "High energy functional training, athletic conditioning, and cardiovascular routines.",
+    videoUrl: "https://player.vimeo.com/external/434418689.sd.mp4?s=90c8280eaac95dc91e0b21d16f2d812f1515a883&profile_id=165&oauth2_token_id=57447761",
+    thumbnail: "/images/team.jpg"
   }
 ];

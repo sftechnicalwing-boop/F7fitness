@@ -1,29 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Play } from 'lucide-react';
+import { VideoTourModal } from './VideoTourModal';
+
+const backgroundImages = [
+  "/images/gym_background.jpg",
+  "/images/gym_background2.jpg",
+  "/images/gym_background3.jpg"
+];
 
 export const Hero: React.FC = () => {
-  // Stable high-quality CDN fitness stock video (autoplays fast)
-  const videoUrl = "https://player.vimeo.com/external/538902581.sd.mp4?s=d001602492f1f0a514d3f3f5b08c903fb5cdbe2e&profile_id=165&oauth2_token_id=57447761";
-  const posterUrl = "/images/hero_gym_poster.png";
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveImageIndex((prev) => (prev + 1) % backgroundImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section id="home" className="relative w-full h-screen overflow-hidden flex items-center bg-black">
-      {/* Background Video Layer */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster={posterUrl}
-        className="absolute top-0 left-0 w-full h-full object-cover scale-[1.02]"
-      >
-        <source src={videoUrl} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {/* Background Image Carousel Layer */}
+      {backgroundImages.map((image, idx) => (
+        <img
+          key={image}
+          src={image}
+          alt={`F7 Fitness Gym Background ${idx + 1}`}
+          className={`absolute top-0 left-0 w-full h-full object-cover scale-[1.01] transition-opacity duration-1000 ease-in-out brightness-[1.15] contrast-[1.05] saturate-[1.05] ${
+            idx === activeImageIndex ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      ))}
 
       {/* Cinematic Vignette Overlay (Subtle readability gradient) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/60 to-transparent z-10" />
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-brand-black/20 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/45 to-transparent z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-brand-black/15 z-10" />
 
       {/* Hero Content Container */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 w-full mt-12 sm:mt-0">
@@ -57,36 +69,19 @@ export const Hero: React.FC = () => {
               <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
             
-            <a 
-              href="#about" 
-              className="group inline-flex items-center justify-center bg-transparent text-white font-sans font-extrabold text-sm uppercase tracking-wider px-8 py-4 border border-white/30 hover:border-brand-yellow hover:text-brand-yellow transition-all duration-300"
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="group inline-flex items-center justify-center bg-transparent text-white font-sans font-extrabold text-sm uppercase tracking-wider px-8 py-4 border border-white/30 hover:border-brand-yellow hover:text-brand-yellow transition-all duration-300 cursor-pointer"
             >
               <Play size={14} className="mr-2 fill-white group-hover:fill-brand-yellow group-hover:text-brand-yellow transition-colors" />
               <span>EXPLORE THE GYM</span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator overlay */}
-      <div className="absolute bottom-8 left-0 w-full z-20 flex justify-center pointer-events-none">
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-sans font-semibold text-[10px] tracking-[0.25em] text-white/50 uppercase">
-            SCROLL TO EXPLORE
-          </span>
-          <div className="w-[1px] h-12 bg-white/20 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1/2 bg-brand-yellow animate-[scrollLine_2s_infinite_ease-in-out]" />
-          </div>
-        </div>
-      </div>
-      
-      {/* Styles for scroll animation inline */}
-      <style>{`
-        @keyframes scrollLine {
-          0% { transform: translateY(-100%); }
-          100% { transform: translateY(200%); }
-        }
-      `}</style>
+      {/* Video Modal */}
+      <VideoTourModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

@@ -16,7 +16,7 @@ export const About: React.FC = () => {
             {/* The Image */}
             <div className="overflow-hidden border border-brand-gray-light bg-brand-gray">
               <img 
-                src="/images/trainer_prasad_konda.png" 
+                src="/images/founder_prasad_konda.png" 
                 alt="Prasad Konda - Head Coach & Founder" 
                 className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 hover:scale-105"
               />

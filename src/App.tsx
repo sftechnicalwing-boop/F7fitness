@@ -15,6 +15,7 @@ import { Gallery } from './components/Gallery';
 import { Location } from './components/Location';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 function App() {
   return (
@@ -72,6 +73,9 @@ function App() {
 
       {/* 16. Branded footer */}
       <Footer />
+
+      {/* Floating WhatsApp Integration */}
+      <WhatsAppButton />
     </div>
   );
 }
