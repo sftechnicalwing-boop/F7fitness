@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { VideoTourModal } from './VideoTourModal';
 
 const backgroundImages = [
@@ -61,13 +62,13 @@ export const Hero: React.FC = () => {
 
           {/* Action CTAs */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-            <a 
-              href="#membership" 
+            <Link
+              to="/auth"
               className="group inline-flex items-center justify-center bg-brand-yellow text-brand-black font-sans font-extrabold text-sm uppercase tracking-wider px-8 py-4 border border-brand-yellow hover:bg-transparent hover:text-brand-yellow transition-all duration-300"
             >
               <span>JOIN F7 FITNESS</span>
               <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
             
             <button 
               onClick={() => setIsModalOpen(true)}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
 import { gymDetails } from '../data/gymData';
 
@@ -60,13 +61,13 @@ export const Navbar: React.FC = () => {
 
           {/* Desktop CTA */}
           <div className="hidden lg:block">
-            <a 
-              href="#membership" 
+            <Link
+              to="/auth"
               className="group relative inline-flex items-center justify-center bg-brand-yellow text-brand-black font-sans font-bold text-xs uppercase tracking-widest px-6 py-3 border border-brand-yellow hover:bg-transparent hover:text-brand-yellow transition-all duration-300"
             >
               <span>JOIN NOW</span>
               <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Hamburguer Icon */}
@@ -103,14 +104,13 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile Contact & CTA */}
           <div className="flex flex-col gap-6 border-t border-brand-gray-light pt-8">
-            <a 
-              href={gymDetails.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/auth"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full text-center bg-brand-yellow text-brand-black font-sans font-bold text-sm uppercase tracking-widest py-4 border border-brand-yellow hover:bg-transparent hover:text-brand-yellow transition-all duration-300"
             >
               JOIN F7 FITNESS
-            </a>
+            </Link>
             
             <div className="text-center">
               <p className="text-[10px] text-brand-neutral/50 uppercase tracking-widest">CALL NOW</p>

@@ -1,3 +1,4 @@
+import { Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { BrandStatement } from './components/BrandStatement';
@@ -16,8 +17,9 @@ import { Location } from './components/Location';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
+import { AuthPage } from './pages/AuthPage';
 
-function App() {
+function HomePage() {
   return (
     <div className="min-h-screen bg-brand-black text-brand-white font-sans selection:bg-brand-yellow selection:text-brand-black">
       {/* Navigation */}
@@ -77,6 +79,15 @@ function App() {
       {/* Floating WhatsApp Integration */}
       <WhatsAppButton />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/auth" element={<AuthPage />} />
+    </Routes>
   );
 }
 

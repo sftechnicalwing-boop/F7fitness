@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Calendar } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { gymDetails } from '../data/gymData';
 
 export const FinalCTA: React.FC = () => {
@@ -37,15 +38,13 @@ export const FinalCTA: React.FC = () => {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a 
-            href={gymDetails.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link 
+            to="/auth"
             className="group w-full sm:w-auto inline-flex items-center justify-center bg-brand-yellow text-brand-black font-sans font-black text-xs uppercase tracking-widest px-8 py-4 border border-brand-yellow hover:bg-transparent hover:text-brand-yellow transition-all duration-300"
           >
             <span>JOIN F7 FITNESS</span>
             <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
-          </a>
+          </Link>
           
           <a 
             href={`mailto:${gymDetails.email}?subject=Booking%20a%20Visit%20to%20F7%20Fitness`}

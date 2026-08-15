@@ -1,5 +1,6 @@
 import React from 'react';
 import { Check, MessageSquare } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { membershipPlans, gymDetails } from '../data/gymData';
 
 export const Membership: React.FC = () => {
@@ -71,10 +72,8 @@ export const Membership: React.FC = () => {
 
               {/* Conversion Buttons */}
               <div className="flex flex-col gap-3 pt-6 border-t border-brand-gray-light">
-                <a 
-                  href={gymDetails.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link 
+                  to="/auth"
                   className={`w-full text-center font-sans font-bold text-xs uppercase tracking-widest py-3 border transition-all duration-300 ${
                     plan.recommended
                       ? 'bg-brand-yellow text-brand-black border-brand-yellow hover:bg-transparent hover:text-brand-yellow'
@@ -82,7 +81,7 @@ export const Membership: React.FC = () => {
                   }`}
                 >
                   JOIN NOW
-                </a>
+                </Link>
                 
                 <a 
                   href={`tel:${gymDetails.phone.replace(/\s+/g, '')}`}

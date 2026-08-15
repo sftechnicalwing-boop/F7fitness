@@ -16,7 +16,7 @@ export const Testimonials: React.FC = () => {
   // Auto transition every 6 seconds
   useEffect(() => {
     const timer = setInterval(() => {
-      handleNext();
+      setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
     }, 6000);
     return () => clearInterval(timer);
   }, []);

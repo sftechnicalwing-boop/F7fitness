@@ -65,9 +65,7 @@ export const Results: React.FC = () => {
           {transformations.map((item, idx) => (
             <div 
               key={item.id}
-              className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
-                idx % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              }`}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
             >
               {/* Left Side: Before/After Images Split - 6 cols */}
               <div className={`lg:col-span-6 grid grid-cols-2 gap-4 ${idx % 2 === 1 ? 'lg:order-last' : ''}`}>
@@ -92,7 +90,7 @@ export const Results: React.FC = () => {
                   <img 
                     src={item.afterImage} 
                     alt="After State" 
-                    className="w-full h-full object-cover grayscale-0 brightness-90"
+                    className="w-full h-full object-cover brightness-90"
                   />
                   <div className="absolute top-4 left-4 bg-brand-yellow text-brand-black px-3 py-1 font-display font-bold text-[10px] uppercase tracking-widest">
                     AFTER
