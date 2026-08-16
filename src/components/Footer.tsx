@@ -1,6 +1,6 @@
 import React from 'react';
 import { Logo } from './Logo';
-import { gymDetails } from '../data/gymData';
+import { gymDetails, locations } from '../data/gymData';
 
 export const Footer: React.FC = () => {
   const footerLinks = [
@@ -69,7 +69,7 @@ export const Footer: React.FC = () => {
             <div className="space-y-4 font-sans text-xs sm:text-sm text-brand-neutral/60">
               <p className="leading-relaxed">
                 <span className="text-white font-bold block mb-1">HQ ADDRESS:</span>
-                {gymDetails.address}
+                {locations[0].address}
               </p>
               <p>
                 <span className="text-white font-bold block mb-1">TELEPHONE:</span>

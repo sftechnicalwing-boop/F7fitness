@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, MessageSquare, Mail, Clock, Navigation, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, MessageSquare, Mail, Clock, Navigation } from 'lucide-react';
 import { gymDetails, locations } from '../data/gymData';
 
 export const Location: React.FC = () => {
