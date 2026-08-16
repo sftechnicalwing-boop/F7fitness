@@ -49,30 +49,60 @@ export interface GymVideo {
   thumbnail: string;
 }
 
+export interface GymLocation {
+  id: string;
+  name: string;
+  address: string;
+  googleMapsUrl: string;
+}
+
 export interface GymDetails {
   brandName: string;
   brandDescriptor: string;
-  address: string;
   phone: string;
   whatsapp: string;
   email: string;
   openingHours: string[];
-  googleMapsUrl: string;
 }
 
 export const gymDetails: GymDetails = {
   brandName: "F7 FITNESS",
   brandDescriptor: "BY PRASAD KONDA",
-  address: "Plot No. 7, High-Performance Avenue, Jubilee Hills, Hyderabad, TS, 500033",
   phone: "+91 99081 91614",
   whatsapp: "https://wa.me/919908191614?text=Hi%20F7%20Fitness!%20I%20am%20interested%20in%20joining.",
   email: "info@f7fitness.in",
   openingHours: [
     "Monday – Saturday: 5:30 AM – 10:00 PM",
     "Sunday: 6:00 AM – 12:00 PM (Recovery Sessions Only)"
-  ],
-  googleMapsUrl: "https://maps.google.com/?q=Jubilee+Hills,+Hyderabad"
+  ]
 };
+
+export const locations: GymLocation[] = [
+  {
+    id: "loc-bolarum",
+    name: "Bolarum",
+    address: "Vijay Vihar colony, Bolarum Road, opposite brudhavan colony enclave, Sruthi pride building, New Bolarum, Hyderabad, Telangana 500010",
+    googleMapsUrl: "https://www.google.com/maps/dir/17.551213,78.492814/F7+Fitness+by+Prasad+Konda,+Vijay+Vihar+colony,+Bolarum+Road,+opposite+brudhavan+colony+enclave,+Sruthi+pride+building,+New+Bolarum,+Hyderabad,+Telangana+500010/@17.5425641,78.4796999,13.81z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3bcb976d66d8069f:0xe2afc2e8411d264!2m2!1d78.5113217!2d17.5343441!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D"
+  },
+  {
+    id: "loc1",
+    name: "Jubilee Hills",
+    address: "Location 1, Jubilee Hills, Hyderabad",
+    googleMapsUrl: "https://maps.google.com/maps?vet=10CAAQoqAOahcKEwiA0fiHkaKWAxUAAAAAHQAAAAAQJA..i&channel=entpr&client=firefox-b-e&pvq=Cg0vZy8xMXM1al9wOHdiIhAKCmY3IGZpdG5lc3MQAhgD&lqi=CgpmNyBmaXRuZXNzSOrG6o-WuICACFoUEAAQARgAGAEiCmY3IGZpdG5lc3OSAQNneW0&fvr=1&cs=1&um=1&ie=UTF-8&fb=1&gl=in&sa=X&ftid=0x3bcb976d66d8069f:0xe2afc2e8411d264"
+  },
+  {
+    id: "loc2",
+    name: "Banjara Hills",
+    address: "Location 2, Banjara Hills, Hyderabad",
+    googleMapsUrl: "https://maps.google.com/maps?vet=10CAAQoqAOahcKEwjoqNHDkaKWAxUAAAAAHQAAAAAQGg..i&channel=entpr&sca_esv=c4b1addd543662be&udm=1&client=firefox-b-e&hs=WD7&pvq=Cg0vZy8xMWYwM240ampmIhAKCmY3IGZpdG5lc3MQAhgD&lqi=CgpmNyBmaXRuZXNzSI2EibqArYCACFoUEAAQARgAGAEiCmY3IGZpdG5lc3OSAQ5maXRuZXNzX2NlbnRlcg&fvr=1&cs=1&um=1&ie=UTF-8&fb=1&gl=in&sa=X&ftid=0x3bcb9ac828dbeec7:0xa03fffcc4176c311"
+  },
+  {
+    id: "loc3",
+    name: "Madhapur",
+    address: "Location 3, Madhapur, Hyderabad",
+    googleMapsUrl: "https://maps.google.com/maps?vet=10CAAQoqAOahcKEwiA0fiHkaKWAxUAAAAAHQAAAAAQFw..i&channel=entpr&client=firefox-b-e&pvq=Cg0vZy8xMWtxbTVtcG56IhAKCmY3IGZpdG5lc3MQAhgD&lqi=CgpmNyBmaXRuZXNzSJ6t57LasYCACFoUEAAQARgAGAEiCmY3IGZpdG5lc3OSAQNneW0&fvr=1&cs=1&um=1&ie=UTF-8&fb=1&gl=in&sa=X&ftid=0x3bcb854c2c36193f:0xe47c3fe434f08bb8"
+  }
+];
 
 export const programs: Program[] = [
   {
@@ -117,10 +147,28 @@ export const trainers: Trainer[] = [
     id: "prasad-konda",
     name: "Prasad Konda",
     role: "Founder & Head Coach",
-    specialization: "Strength & Conditioning, Athletic Performance",
+    specialization: "Strength & Conditioning",
     experience: "10+ Years",
-    bio: "Prasad Konda is dedicated to helping individuals build their strongest, most resilient selves. His coaching methodology merges science-backed strength programming with rigid discipline to achieve measurable physical results.",
+    bio: "Prasad is dedicated to helping individuals build their strongest, most resilient selves. His coaching methodology merges science-backed programming with discipline.",
     image: "/images/trainer_prasad_konda.png"
+  },
+  {
+    id: "arjun-reddy",
+    name: "Arjun Reddy",
+    role: "Senior Coach",
+    specialization: "Functional Training & Mobility",
+    experience: "7+ Years",
+    bio: "Arjun specializes in functional fitness and athletic conditioning. He focuses on improving movement quality and building bulletproof joints for long-term health.",
+    image: "/images/gym.jpg"
+  },
+  {
+    id: "neha-sharma",
+    name: "Neha Sharma",
+    role: "Fitness Coach",
+    specialization: "Fat Loss & Nutrition",
+    experience: "5+ Years",
+    bio: "Neha is an expert in metabolic conditioning and sustainable fat loss. She empowers clients through high-energy workouts and tailored nutritional guidance.",
+    image: "/images/team2.jpg"
   }
 ];
 
@@ -155,7 +203,7 @@ export const membershipPlans: MembershipPlan[] = [
   {
     id: "monthly",
     name: "Monthly",
-    price: "₹3,500",
+    price: "₹1,499",
     period: "month",
     features: [
       "Access to all F7 training zones",
@@ -163,54 +211,8 @@ export const membershipPlans: MembershipPlan[] = [
       "Locker & shower facilities",
       "1 fitness assessment"
     ],
-    recommended: false,
-    ctaText: "Choose Monthly"
-  },
-  {
-    id: "quarterly",
-    name: "Quarterly",
-    price: "₹9,000",
-    period: "3 months",
-    features: [
-      "Access to all F7 training zones",
-      "Personalized workout template",
-      "2 body composition audits",
-      "General trainer guidance",
-      "Save 15% vs monthly"
-    ],
     recommended: true,
-    ctaText: "Choose Quarterly"
-  },
-  {
-    id: "half-yearly",
-    name: "Half-Yearly",
-    price: "₹16,000",
-    period: "6 months",
-    features: [
-      "Access to all F7 training zones",
-      "Custom nutrition guide plan",
-      "4 body composition audits",
-      "General trainer guidance",
-      "Save 25% vs monthly"
-    ],
-    recommended: false,
-    ctaText: "Choose Half-Yearly"
-  },
-  {
-    id: "yearly",
-    name: "Yearly",
-    price: "₹28,000",
-    period: "year",
-    features: [
-      "Unlimited access to F7 facilities",
-      "12 body composition audits",
-      "Tailored strength programming",
-      "1-on-1 personal session (1hr)",
-      "General trainer support",
-      "Save 33% vs monthly"
-    ],
-    recommended: false,
-    ctaText: "Choose Yearly"
+    ctaText: "Choose Monthly"
   }
 ];
 
@@ -220,18 +222,21 @@ export const testimonials: Testimonial[] = [
     name: "Vikram Reddy",
     role: "Member since 2024",
     quote: "F7 has completely changed my perspective on fitness. The focus on compound movements, programming, and coaches' guidance keeps me highly consistent and disciplined.",
+    image: "https://randomuser.me/api/portraits/men/32.jpg"
   },
   {
     id: "t2",
     name: "Sneha Nair",
     role: "Member since 2025",
     quote: "The atmosphere here is electric yet serious. There are no gimmicks—just hard training, professional equipment, and a fantastic community that keeps you showing up.",
+    image: "https://randomuser.me/api/portraits/women/44.jpg"
   },
   {
     id: "t3",
     name: "Abhishek Sen",
     role: "Member since 2024",
     quote: "Prasad Konda’s coaching philosophy is elite. My squat form and deadlift strength have skyrocketed under his direction. If you want results, this is the gym.",
+    image: "https://randomuser.me/api/portraits/men/46.jpg"
   }
 ];
 
