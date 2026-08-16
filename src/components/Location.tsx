@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapPin, Phone, MessageSquare, Mail, Clock, Navigation, ExternalLink } from 'lucide-react';
-import { gymDetails } from '../data/gymData';
+import { gymDetails, locations } from '../data/gymData';
 
 export const Location: React.FC = () => {
+  const [activeLocationIndex, setActiveLocationIndex] = useState(0);
+  const activeLocation = locations[activeLocationIndex];
+
   return (
     <section id="contact" className="bg-brand-black py-24 sm:py-36 border-t border-brand-gray-light">
       <div className="max-w-7xl mx-auto px-6">
@@ -24,9 +27,36 @@ export const Location: React.FC = () => {
           {/* Contact Information (7 cols) */}
           <div className="lg:col-span-6 text-left flex flex-col justify-between">
             <div className="space-y-8">
+              {/* Location Selector */}
+              <div className="flex gap-4 mb-6">
+                <div className="mt-1 text-brand-yellow shrink-0">
+                  <MapPin size={20} />
+                </div>
+                <div className="w-full">
+                  <h4 className="font-sans font-bold text-xs text-brand-neutral/40 uppercase tracking-widest mb-3">
+                    SELECT LOCATION
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {locations.map((loc, idx) => (
+                      <button
+                        key={loc.id}
+                        onClick={() => setActiveLocationIndex(idx)}
+                        className={`font-sans font-bold text-[10px] tracking-widest px-4 py-2 uppercase border transition-colors ${
+                          activeLocationIndex === idx
+                            ? 'bg-brand-yellow text-brand-black border-brand-yellow'
+                            : 'bg-transparent text-white border-white/20 hover:border-brand-yellow'
+                        }`}
+                      >
+                        {loc.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               {/* Address */}
               <div className="flex gap-4">
-                <div className="mt-1 text-brand-yellow shrink-0">
+                <div className="mt-1 text-brand-yellow shrink-0 opacity-0">
                   <MapPin size={20} />
                 </div>
                 <div>
@@ -34,7 +64,7 @@ export const Location: React.FC = () => {
                     THE TRAINING BASE
                   </h4>
                   <p className="font-sans text-white text-xs sm:text-sm leading-relaxed">
-                    {gymDetails.address}
+                    {activeLocation.address}
                   </p>
                 </div>
               </div>
@@ -89,7 +119,7 @@ export const Location: React.FC = () => {
             {/* Main Action CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 mt-12">
               <a 
-                href={gymDetails.googleMapsUrl}
+                href={activeLocation.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center bg-brand-yellow text-brand-black font-sans font-black text-xs uppercase tracking-widest px-8 py-4 border border-brand-yellow hover:bg-transparent hover:text-brand-yellow transition-all duration-300"
@@ -110,55 +140,19 @@ export const Location: React.FC = () => {
             </div>
           </div>
 
-          {/* Custom Styled Map Placeholder (6 cols) */}
-          <div className="lg:col-span-6">
-            <a 
-              href={gymDetails.googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative block w-full h-[320px] lg:h-full min-h-[300px] bg-brand-gray border border-brand-gray-light hover:border-brand-yellow/50 overflow-hidden group cursor-pointer"
-            >
-              {/* Sleek Map Vector/Abstract Pattern Grid */}
-              <div className="absolute inset-0 bg-brand-black opacity-90 transition-opacity group-hover:opacity-80">
-                {/* Radial grid lines for high-tech maps feel */}
-                <div 
-                  className="w-full h-full"
-                  style={{
-                    backgroundImage: 'radial-gradient(var(--color-brand-gray-light) 1px, transparent 1px)',
-                    backgroundSize: '24px 24px'
-                  }}
-                />
-                
-                {/* Abstract road paths */}
-                <svg className="absolute inset-0 w-full h-full opacity-10 text-white" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M 0 100 Q 150 120 300 100 T 600 120" stroke="white" strokeWidth="4" fill="none" />
-                  <path d="M 100 0 L 120 400" stroke="white" strokeWidth="3" fill="none" />
-                  <path d="M 400 0 L 380 400" stroke="white" strokeWidth="3" fill="none" />
-                  <path d="M 0 250 L 600 280" stroke="white" strokeWidth="5" fill="none" />
-                </svg>
-              </div>
-
-              {/* Pin Accent Marker */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center">
-                <div className="relative">
-                  {/* Rippling circle */}
-                  <span className="absolute -top-1 -left-1 w-8 h-8 rounded-full bg-brand-yellow/30 animate-ping" />
-                  <div className="w-6 h-6 rounded-full bg-brand-yellow flex items-center justify-center shadow-lg border border-brand-black">
-                    <MapPin size={12} className="text-brand-black fill-brand-black" />
-                  </div>
-                </div>
-                
-                <span className="font-display font-black text-[10px] text-brand-black bg-brand-yellow px-2 py-0.5 tracking-wider uppercase mt-2 shadow-md">
-                  F7 FITNESS
-                </span>
-              </div>
-
-              {/* Action Banner */}
-              <div className="absolute bottom-4 right-4 bg-brand-black/90 border border-brand-gray-light px-3 py-1.5 flex items-center gap-1.5 font-sans font-bold text-[9px] text-brand-neutral/60 tracking-wider uppercase group-hover:text-brand-yellow group-hover:border-brand-yellow/30 transition-colors">
-                <span>Launch Google Maps</span>
-                <ExternalLink size={10} />
-              </div>
-            </a>
+          {/* Google Maps Embed (6 cols) */}
+          <div className="lg:col-span-6 relative w-full h-[320px] lg:h-full min-h-[300px] border border-brand-gray-light overflow-hidden bg-brand-gray">
+            <iframe 
+              title={`Google Maps Location - ${activeLocation.name}`}
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(activeLocation.address)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen={false} 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 grayscale hover:grayscale-0 transition-all duration-500"
+            />
           </div>
 
         </div>

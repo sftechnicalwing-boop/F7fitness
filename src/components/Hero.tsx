@@ -9,6 +9,40 @@ const backgroundImages = [
   "/images/gym_background3.jpg"
 ];
 
+const statsList = [
+  { end: 500, suffix: "+", label: "ACTIVE MEMBERS" },
+  { end: 10, suffix: "+", label: "EXPERT COACHES" },
+  { end: 12, suffix: "+", label: "YEARS EXPERIENCE" },
+  { end: 15000, suffix: "+", label: "SESSIONS DELIVERED" }
+];
+
+const CountUp: React.FC<{ end: number; duration?: number; suffix?: string }> = ({ end, duration = 2500, suffix = '' }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTimestamp: number | null = null;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      
+      // easeOutExpo for smooth deceleration
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      
+      setCount(Math.floor(easeProgress * end));
+      
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        setCount(end);
+      }
+    };
+    
+    window.requestAnimationFrame(step);
+  }, [end, duration]);
+
+  return <span>{count.toLocaleString()}{suffix}</span>;
+};
+
 export const Hero: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -61,7 +95,7 @@ export const Hero: React.FC = () => {
           </p>
 
           {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-12 sm:mb-16">
             <Link
               to="/auth"
               className="group inline-flex items-center justify-center bg-brand-yellow text-brand-black font-sans font-extrabold text-sm uppercase tracking-wider px-8 py-4 border border-brand-yellow hover:bg-transparent hover:text-brand-yellow transition-all duration-300"
@@ -77,6 +111,20 @@ export const Hero: React.FC = () => {
               <Play size={14} className="mr-2 fill-white group-hover:fill-brand-yellow group-hover:text-brand-yellow transition-colors" />
               <span>EXPLORE THE GYM</span>
             </button>
+          </div>
+
+          {/* Inline Stats in Hero */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-white/20 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            {statsList.map((stat, idx) => (
+              <div key={idx} className="flex flex-col text-left">
+                <span className="font-display font-black text-2xl sm:text-3xl text-brand-yellow leading-none tracking-tight">
+                  <CountUp end={stat.end} suffix={stat.suffix} />
+                </span>
+                <span className="font-sans font-bold text-[9px] sm:text-[10px] tracking-widest text-brand-neutral/60 mt-1 uppercase">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

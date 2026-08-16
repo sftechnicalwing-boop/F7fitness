@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { BrandStatement } from './components/BrandStatement';
-import { Stats } from './components/Stats';
 import { About } from './components/About';
 import { WhyF7 } from './components/WhyF7';
 import { Programs } from './components/Programs';
@@ -33,10 +32,7 @@ function HomePage() {
         {/* 2. Brand Statement */}
         <BrandStatement />
 
-        {/* 3. Counter Statistics */}
-        <Stats />
-
-        {/* 4. About F7 Section */}
+        {/* 3. About F7 Section */}
         <About />
 
         {/* 5. Why F7 core benefits grid */}
