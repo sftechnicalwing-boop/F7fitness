@@ -146,7 +146,7 @@ export const trainers: Trainer[] = [
   {
     id: "prasad-konda",
     name: "Prasad Konda",
-    role: "Founder & Head Coach",
+    role: "Founder",
     specialization: "Strength & Conditioning",
     experience: "10+ Years",
     bio: "Prasad is dedicated to helping individuals build their strongest, most resilient selves. His coaching methodology merges science-backed programming with discipline.",
