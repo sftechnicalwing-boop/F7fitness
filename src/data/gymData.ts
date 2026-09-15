@@ -53,6 +53,8 @@ export interface GymLocation {
   id: string;
   name: string;
   address: string;
+  lat: number;
+  lng: number;
   googleMapsUrl: string;
 }
 
@@ -81,26 +83,26 @@ export const locations: GymLocation[] = [
   {
     id: "loc-bolarum",
     name: "Bolarum",
-    address: "Vijay Vihar colony, Bolarum Road, opposite brudhavan colony enclave, Sruthi pride building, New Bolarum, Hyderabad, Telangana 500010",
-    googleMapsUrl: "https://www.google.com/maps/dir/17.551213,78.492814/F7+Fitness+by+Prasad+Konda,+Vijay+Vihar+colony,+Bolarum+Road,+opposite+brudhavan+colony+enclave,+Sruthi+pride+building,+New+Bolarum,+Hyderabad,+Telangana+500010/@17.5425641,78.4796999,13.81z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3bcb976d66d8069f:0xe2afc2e8411d264!2m2!1d78.5113217!2d17.5343441!5m1!1e1?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D"
+    address: "1st Floor, Shruthi Pride / Shruthi Infra Complex, Vijay Vihar Colony, Bolarum Road, opposite Brindavan Enclave, New Bolarum, Hyderabad, Telangana 500010",
+    lat: 17.5343441,
+    lng: 78.5113217,
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=17.5343441,78.5113217"
   },
   {
-    id: "loc1",
-    name: "Jubilee Hills",
-    address: "Location 1, Jubilee Hills, Hyderabad",
-    googleMapsUrl: "https://maps.google.com/maps?vet=10CAAQoqAOahcKEwiA0fiHkaKWAxUAAAAAHQAAAAAQJA..i&channel=entpr&client=firefox-b-e&pvq=Cg0vZy8xMXM1al9wOHdiIhAKCmY3IGZpdG5lc3MQAhgD&lqi=CgpmNyBmaXRuZXNzSOrG6o-WuICACFoUEAAQARgAGAEiCmY3IGZpdG5lc3OSAQNneW0&fvr=1&cs=1&um=1&ie=UTF-8&fb=1&gl=in&sa=X&ftid=0x3bcb976d66d8069f:0xe2afc2e8411d264"
+    id: "loc-risala",
+    name: "Risala Bazar",
+    address: "1st Floor, above Reliance Smart Point, Stewart Road, Rizala Bazar, Banjara Village Colony, Bolarum, Secunderabad, Telangana 500010",
+    lat: 17.52896,
+    lng: 78.51780,
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=17.52896,78.51780"
   },
   {
-    id: "loc2",
-    name: "Banjara Hills",
-    address: "Location 2, Banjara Hills, Hyderabad",
-    googleMapsUrl: "https://maps.google.com/maps?vet=10CAAQoqAOahcKEwjoqNHDkaKWAxUAAAAAHQAAAAAQGg..i&channel=entpr&sca_esv=c4b1addd543662be&udm=1&client=firefox-b-e&hs=WD7&pvq=Cg0vZy8xMWYwM240ampmIhAKCmY3IGZpdG5lc3MQAhgD&lqi=CgpmNyBmaXRuZXNzSI2EibqArYCACFoUEAAQARgAGAEiCmY3IGZpdG5lc3OSAQ5maXRuZXNzX2NlbnRlcg&fvr=1&cs=1&um=1&ie=UTF-8&fb=1&gl=in&sa=X&ftid=0x3bcb9ac828dbeec7:0xa03fffcc4176c311"
-  },
-  {
-    id: "loc3",
-    name: "Madhapur",
-    address: "Location 3, Madhapur, Hyderabad",
-    googleMapsUrl: "https://maps.google.com/maps?vet=10CAAQoqAOahcKEwiA0fiHkaKWAxUAAAAAHQAAAAAQFw..i&channel=entpr&client=firefox-b-e&pvq=Cg0vZy8xMWtxbTVtcG56IhAKCmY3IGZpdG5lc3MQAhgD&lqi=CgpmNyBmaXRuZXNzSJ6t57LasYCACFoUEAAQARgAGAEiCmY3IGZpdG5lc3OSAQNneW0&fvr=1&cs=1&um=1&ie=UTF-8&fb=1&gl=in&sa=X&ftid=0x3bcb854c2c36193f:0xe47c3fe434f08bb8"
+    id: "loc-alwal",
+    name: "Alwal",
+    address: "4th Floor, SRM Square Building, Citizen Colony Road, HT Road, Old Alwal, Secunderabad, Telangana 500010",
+    lat: 17.5124144,
+    lng: 78.4985516,
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=17.5124144,78.4985516"
   }
 ];
 

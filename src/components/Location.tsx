@@ -143,8 +143,9 @@ export const Location: React.FC = () => {
           {/* Google Maps Embed (6 cols) */}
           <div className="lg:col-span-6 relative w-full h-[320px] lg:h-full min-h-[300px] border border-brand-gray-light overflow-hidden bg-brand-gray">
             <iframe 
+              key={activeLocation.id}
               title={`Google Maps Location - ${activeLocation.name}`}
-              src={`https://maps.google.com/maps?q=${encodeURIComponent(activeLocation.address)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+              src={`https://maps.google.com/maps?q=${activeLocation.lat},${activeLocation.lng}&z=16&ie=UTF8&output=embed`}
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 
