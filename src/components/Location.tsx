@@ -6,6 +6,12 @@ export const Location: React.FC = () => {
   const [activeLocationIndex, setActiveLocationIndex] = useState(0);
   const activeLocation = locations[activeLocationIndex];
 
+  const phoneDigits = activeLocation.phone.replace(/\D/g, '');
+  const waPhone = phoneDigits.startsWith('91') ? phoneDigits : `91${phoneDigits}`;
+  const whatsappUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(
+    `Hi ${activeLocation.trainerName}! I am interested in joining F7 Fitness (${activeLocation.name} branch).`
+  )}`;
+
   return (
     <section id="location" className="bg-brand-black py-24 sm:py-36 border-t border-brand-gray-light">
       <div className="max-w-7xl mx-auto px-6">
@@ -93,10 +99,10 @@ export const Location: React.FC = () => {
                   <Phone size={16} className="text-brand-yellow shrink-0 mt-0.5" />
                   <div>
                     <span className="font-sans font-bold text-[10px] text-brand-neutral/40 uppercase tracking-widest block mb-0.5">
-                      CALL OFFICE
+                      CALL TRAINER • {activeLocation.trainerName.toUpperCase()}
                     </span>
-                    <a href={`tel:${gymDetails.phone.replace(/\s+/g, '')}`} className="font-sans font-bold text-sm text-white hover:text-brand-yellow transition-colors">
-                      {gymDetails.phone}
+                    <a href={`tel:${activeLocation.phone.replace(/\s+/g, '')}`} className="font-sans font-bold text-sm text-white hover:text-brand-yellow transition-colors">
+                      {activeLocation.phone}
                     </a>
                   </div>
                 </div>
@@ -129,7 +135,7 @@ export const Location: React.FC = () => {
               </a>
               
               <a 
-                href={gymDetails.whatsapp}
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center bg-transparent text-white font-sans font-black text-xs uppercase tracking-widest px-8 py-4 border border-white/20 hover:border-brand-yellow hover:text-brand-yellow transition-all duration-300"

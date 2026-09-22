@@ -58,6 +58,8 @@ export interface GymLocation {
   lat: number;
   lng: number;
   googleMapsUrl: string;
+  phone: string;
+  trainerName: string;
 }
 
 export interface GymDetails {
@@ -88,7 +90,9 @@ export const locations: GymLocation[] = [
     address: "1st Floor, Shruthi Pride / Shruthi Infra Complex, Vijay Vihar Colony, Bolarum Road, opposite Brindavan Enclave, New Bolarum, Hyderabad, Telangana 500010",
     lat: 17.5343441,
     lng: 78.5113217,
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=17.5343441,78.5113217"
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=17.5343441,78.5113217",
+    phone: "+91 96403 18855",
+    trainerName: "Chandu Goud"
   },
   {
     id: "loc-risala",
@@ -96,7 +100,9 @@ export const locations: GymLocation[] = [
     address: "1st Floor, above Reliance Smart Point, Stewart Road, Rizala Bazar, Banjara Village Colony, Bolarum, Secunderabad, Telangana 500010",
     lat: 17.52896,
     lng: 78.51780,
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=17.52896,78.51780"
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=17.52896,78.51780",
+    phone: "+91 62819 76965",
+    trainerName: "Marco"
   },
   {
     id: "loc-alwal",
@@ -104,7 +110,9 @@ export const locations: GymLocation[] = [
     address: "4th Floor, SRM Square Building, Citizen Colony Road, HT Road, Old Alwal, Secunderabad, Telangana 500010",
     lat: 17.5124144,
     lng: 78.4985516,
-    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=17.5124144,78.4985516"
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=17.5124144,78.4985516",
+    phone: "+91 90322 71341",
+    trainerName: "Rajesh"
   }
 ];
 
