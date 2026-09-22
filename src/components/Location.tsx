@@ -7,7 +7,7 @@ export const Location: React.FC = () => {
   const activeLocation = locations[activeLocationIndex];
 
   return (
-    <section id="contact" className="bg-brand-black py-24 sm:py-36 border-t border-brand-gray-light">
+    <section id="location" className="bg-brand-black py-24 sm:py-36 border-t border-brand-gray-light">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Section Title */}

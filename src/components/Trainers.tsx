@@ -60,9 +60,26 @@ export const Trainers: React.FC = () => {
               </div>
 
               {/* Bio */}
-              <p className="font-sans text-brand-neutral/60 text-xs sm:text-sm leading-relaxed">
+              <p className="font-sans text-brand-neutral/60 text-xs sm:text-sm leading-relaxed mb-4">
                 {coach.bio}
               </p>
+
+              {/* Phone & Location */}
+              <div className="flex flex-col gap-1 border-t border-brand-gray-light pt-4">
+                {coach.location && (
+                  <p className="font-sans text-[11px] text-brand-neutral/50 uppercase tracking-widest">
+                    📍 {coach.location}
+                  </p>
+                )}
+                {coach.phone && (
+                  <a
+                    href={`tel:${coach.phone}`}
+                    className="font-sans font-bold text-brand-yellow text-sm tracking-wider hover:underline"
+                  >
+                    📞 {coach.phone}
+                  </a>
+                )}
+              </div>
             </div>
           ))}
         </div>

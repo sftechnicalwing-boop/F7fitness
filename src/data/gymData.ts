@@ -14,6 +14,8 @@ export interface Trainer {
   experience: string;
   bio: string;
   image: string;
+  phone?: string;
+  location?: string;
 }
 
 export interface Facility {
@@ -146,33 +148,41 @@ export const programs: Program[] = [
 
 export const trainers: Trainer[] = [
   {
-    id: "prasad-konda",
-    name: "Prasad Konda",
-    role: "Founder & Head Coach",
+    id: "rajesh",
+    name: "Rajesh",
+    role: "Fitness Trainer",
     specialization: "Strength & Conditioning",
-    experience: "10+ Years",
-    bio: "Prasad is dedicated to helping individuals build their strongest, most resilient selves. His coaching methodology merges science-backed programming with discipline.",
-    image: "/images/trainer_prasad_konda.png"
+    experience: "Pro",
+    bio: "Rajesh brings dedicated coaching expertise to F7 Fitness Alwal. His commitment to member progress and technical training ensures results-driven workouts every session.",
+    image: "/images/trainer_prasad_konda.png",
+    phone: "9032271341",
+    location: "Alwal"
   },
   {
-    id: "arjun-reddy",
-    name: "Arjun Reddy",
-    role: "Senior Coach",
-    specialization: "Functional Training & Mobility",
-    experience: "7+ Years",
-    bio: "Arjun specializes in functional fitness and athletic conditioning. He focuses on improving movement quality and building bulletproof joints for long-term health.",
-    image: "/images/gym.jpg"
+    id: "marco",
+    name: "Marco",
+    role: "Fitness Trainer",
+    specialization: "Functional Training & Muscle Building",
+    experience: "Pro",
+    bio: "Marco leads training at the Bolarum Risala branch with high energy and precision. Specializing in functional movement and muscle development for all fitness levels.",
+    image: "/images/gym.jpg",
+    phone: "6281976965",
+    location: "Bolarum Risala"
   },
   {
-    id: "neha-sharma",
-    name: "Neha Sharma",
-    role: "Fitness Coach",
-    specialization: "Fat Loss & Nutrition",
-    experience: "5+ Years",
-    bio: "Neha is an expert in metabolic conditioning and sustainable fat loss. She empowers clients through high-energy workouts and tailored nutritional guidance.",
-    image: "/images/team2.jpg"
+    id: "chandu-goud",
+    name: "Chandu Goud",
+    role: "Fitness Trainer",
+    specialization: "Fat Loss & Performance",
+    experience: "Pro",
+    bio: "Chandu Goud is the go-to trainer at F7 New Bolarum, known for his motivating style and expert programming in fat loss, endurance, and performance training.",
+    image: "/images/team.jpg",
+    phone: "9640318855",
+    location: "New Bolarum"
   }
 ];
+
+
 
 export const facilities: Facility[] = [
   {
