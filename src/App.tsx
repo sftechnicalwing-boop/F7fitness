@@ -15,7 +15,7 @@ import { Gallery } from './components/Gallery';
 import { Location } from './components/Location';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
-import { WhatsAppButton } from './components/WhatsAppButton';
+import { ChatWidget } from './components/ChatWidget';
 import { AuthPage } from './pages/AuthPage';
 
 function HomePage() {
@@ -72,8 +72,8 @@ function HomePage() {
       {/* 16. Branded footer */}
       <Footer />
 
-      {/* Floating WhatsApp Integration */}
-      <WhatsAppButton />
+      {/* Floating Chat Widget */}
+      <ChatWidget />
     </div>
   );
 }
