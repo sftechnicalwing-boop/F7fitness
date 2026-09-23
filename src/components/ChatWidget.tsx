@@ -46,14 +46,17 @@ export const ChatWidget: React.FC = () => {
   return (
     <>
       {/* Floating Launcher */}
-      <button
-        onClick={() => setOpen(true)}
-        aria-label="Chat with F7 Fitness"
-        className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#25D366] text-white font-sans font-bold text-sm px-5 py-3.5 rounded-full shadow-xl hover:shadow-2xl hover:bg-[#22c35e] transition-all duration-300 ${open ? 'opacity-0 pointer-events-none scale-90' : 'opacity-100 scale-100'}`}
-      >
-        <WaIcon />
-        <span className="tracking-wide">Chat with Us</span>
-      </button>
+      <div className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${open ? 'opacity-0 pointer-events-none scale-90' : 'opacity-100 scale-100'}`}>
+        {/* Pulse ring */}
+        <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30" />
+        <button
+          onClick={() => setOpen(true)}
+          aria-label="Chat with F7 Fitness"
+          className="relative flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#22c35e] text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300"
+        >
+          <WaIcon />
+        </button>
+      </div>
 
       {/* Widget Panel */}
       <div
