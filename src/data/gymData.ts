@@ -162,7 +162,7 @@ export const trainers: Trainer[] = [
     specialization: "Strength & Conditioning",
     experience: "Pro",
     bio: "Rajesh brings dedicated coaching expertise to F7 Fitness Alwal. His commitment to member progress and technical training ensures results-driven workouts every session.",
-    image: "/images/trainer_prasad_konda.png",
+    image: "/images/trainer_rajesh.jpg",
     phone: "9032271341",
     location: "Alwal"
   },
@@ -173,7 +173,7 @@ export const trainers: Trainer[] = [
     specialization: "Functional Training & Muscle Building",
     experience: "Pro",
     bio: "Marco leads training at the Bolarum Risala branch with high energy and precision. Specializing in functional movement and muscle development for all fitness levels.",
-    image: "/images/gym.jpg",
+    image: "/images/trainer_marco.jpg",
     phone: "6281976965",
     location: "Bolarum Risala"
   },
@@ -184,7 +184,7 @@ export const trainers: Trainer[] = [
     specialization: "Fat Loss & Performance",
     experience: "Pro",
     bio: "Chandu Goud is the go-to trainer at F7 New Bolarum, known for his motivating style and expert programming in fat loss, endurance, and performance training.",
-    image: "/images/team.jpg",
+    image: "/images/trainer_chandu.jpg",
     phone: "9640318855",
     location: "New Bolarum"
   }
