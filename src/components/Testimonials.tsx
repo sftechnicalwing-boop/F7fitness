@@ -37,14 +37,7 @@ export const Testimonials: React.FC = () => {
                 </blockquote>
                 
                 {/* Author Info */}
-                <div className="flex items-center gap-4 border-t border-white/10 pt-4">
-                  {test.image && (
-                    <img 
-                      src={test.image} 
-                      alt={test.name} 
-                      className="w-10 h-10 rounded-full object-cover border border-brand-yellow/30 grayscale group-hover:grayscale-0 transition-all duration-300"
-                    />
-                  )}
+                <div className="flex items-center border-t border-white/10 pt-4">
                   <div className="flex flex-col items-start">
                     <cite className="not-italic font-sans font-black text-xs text-brand-yellow uppercase tracking-widest">
                       {test.name}

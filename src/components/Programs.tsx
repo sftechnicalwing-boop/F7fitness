@@ -38,7 +38,7 @@ export const Programs: React.FC = () => {
                   <img 
                     src={prog.image} 
                     alt={prog.name}
-                    className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-75 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+                    className="w-full h-full object-cover opacity-60 group-hover:opacity-75 group-hover:scale-[1.03] transition-all duration-700 ease-out"
                   />
                 </div>
                 
@@ -79,7 +79,7 @@ export const Programs: React.FC = () => {
                   <img 
                     src={prog.image} 
                     alt={prog.name}
-                    className="w-full h-full object-cover grayscale opacity-50 group-hover:opacity-75 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+                    className="w-full h-full object-cover opacity-50 group-hover:opacity-75 group-hover:scale-[1.03] transition-all duration-700 ease-out"
                   />
                 </div>
                 

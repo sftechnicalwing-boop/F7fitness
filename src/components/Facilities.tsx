@@ -44,7 +44,7 @@ export const Facilities: React.FC = () => {
             <img 
               src={facilities[0].image} 
               alt={facilities[0].name}
-              className="w-full h-full object-cover grayscale opacity-75 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 ease-out"
+              className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 ease-out"
             />
             {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent z-10" />
@@ -72,8 +72,8 @@ export const Facilities: React.FC = () => {
               >
                 <img 
                   src={fac.image} 
-                  alt={fac.name}
-                  className="w-full h-full object-cover grayscale opacity-60 group-hover:opacity-90 group-hover:scale-[1.03] transition-all duration-500 ease-out"
+                  alt={fac.name} 
+                  className="w-full h-full object-cover opacity-75 group-hover:opacity-95 group-hover:scale-[1.03] transition-all duration-500 ease-out"
                 />
                 
                 {/* Overlay */}

@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, MessageSquare, Mail, Clock, Navigation } from 'lucide-react';
-import { gymDetails, locations } from '../data/gymData';
+import { MapPin, Phone, MessageSquare, Mail, Clock, Navigation, Eye } from 'lucide-react';
+import { gymDetails, locations, alwalTrainers } from '../data/gymData';
+import { AlwalTrainersModal } from './AlwalTrainersModal';
 
 export const Location: React.FC = () => {
   const [activeLocationIndex, setActiveLocationIndex] = useState(0);
+  const [isAlwalModalOpen, setIsAlwalModalOpen] = useState(false);
   const activeLocation = locations[activeLocationIndex];
 
   const phoneDigits = activeLocation.phone.replace(/\D/g, '');
   const waPhone = phoneDigits.startsWith('91') ? phoneDigits : `91${phoneDigits}`;
-  const whatsappUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(
-    `Hi ${activeLocation.trainerName}! I am interested in joining F7 Fitness (${activeLocation.name} branch).`
-  )}`;
+  const isAlwal = activeLocation.id === 'loc-alwal';
+
+  const whatsappGreeting = isAlwal
+    ? 'Hi F7 Fitness! I am interested in joining F7 Fitness (Alwal branch).'
+    : `Hi ${activeLocation.trainerName}! I am interested in joining F7 Fitness (${activeLocation.name} branch).`;
+
+  const whatsappUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(whatsappGreeting)}`;
 
   return (
     <section id="location" className="bg-brand-black py-24 sm:py-36 border-t border-brand-gray-light">
@@ -30,7 +36,7 @@ export const Location: React.FC = () => {
         {/* Info & Map Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
           
-          {/* Contact Information (7 cols) */}
+          {/* Contact Information (6 cols) */}
           <div className="lg:col-span-6 text-left flex flex-col justify-between">
             <div className="space-y-8">
               {/* Location Selector */}
@@ -75,6 +81,47 @@ export const Location: React.FC = () => {
                 </div>
               </div>
 
+              {/* Alwal Coaches Collage Teaser (If Alwal Branch is active) */}
+              {isAlwal && (
+                <div 
+                  onClick={() => setIsAlwalModalOpen(true)}
+                  className="group cursor-pointer p-4 border border-brand-yellow/40 bg-brand-yellow/5 hover:bg-brand-yellow/10 transition-all duration-300 flex items-center justify-between gap-4"
+                >
+                  <div className="flex items-center gap-4">
+                    {/* Mini 2x2 Collage Thumbnail */}
+                    <div className="grid grid-cols-2 grid-rows-2 w-16 h-16 shrink-0 gap-0.5 bg-black border border-brand-yellow/50 overflow-hidden shadow-md">
+                      {alwalTrainers.map((coach, idx) => (
+                        <img 
+                          key={coach.id} 
+                          src={coach.image} 
+                          alt={`Trainer ${idx + 1}`}
+                          className="w-full h-full object-cover object-top transition-all duration-300"
+                        />
+                      ))}
+                    </div>
+
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-display font-black text-sm text-white uppercase tracking-wider group-hover:text-brand-yellow transition-colors">
+                          ALWAL COACHING TEAM
+                        </span>
+                        <span className="font-sans font-bold text-[9px] bg-brand-yellow text-brand-black px-2 py-0.5 uppercase tracking-wider">
+                          4 COACHES
+                        </span>
+                      </div>
+                      <p className="font-sans text-xs text-brand-neutral/70 mt-1">
+                        4 certified trainers ready to guide your journey. Click to view all coaches.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="shrink-0 flex items-center gap-1 font-sans font-bold text-xs text-brand-yellow uppercase tracking-wider group-hover:translate-x-1 transition-transform">
+                    <span className="hidden sm:inline">VIEW</span>
+                    <Eye size={16} />
+                  </div>
+                </div>
+              )}
+
               {/* Hours */}
               <div className="flex gap-4">
                 <div className="mt-1 text-brand-yellow shrink-0">
@@ -99,7 +146,7 @@ export const Location: React.FC = () => {
                   <Phone size={16} className="text-brand-yellow shrink-0 mt-0.5" />
                   <div>
                     <span className="font-sans font-bold text-[10px] text-brand-neutral/40 uppercase tracking-widest block mb-0.5">
-                      CALL TRAINER • {activeLocation.trainerName.toUpperCase()}
+                      {isAlwal ? 'CALL BRANCH DESK • ALWAL' : `CALL TRAINER • ${activeLocation.trainerName.toUpperCase()}`}
                     </span>
                     <a href={`tel:${activeLocation.phone.replace(/\s+/g, '')}`} className="font-sans font-bold text-sm text-white hover:text-brand-yellow transition-colors">
                       {activeLocation.phone}
@@ -158,13 +205,19 @@ export const Location: React.FC = () => {
               allowFullScreen={false} 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 grayscale hover:grayscale-0 transition-all duration-500"
+              className="absolute inset-0 transition-all duration-500"
             />
           </div>
 
         </div>
 
       </div>
+
+      {/* Alwal 4 Trainers Modal */}
+      <AlwalTrainersModal
+        isOpen={isAlwalModalOpen}
+        onClose={() => setIsAlwalModalOpen(false)}
+      />
     </section>
   );
 };

@@ -112,7 +112,7 @@ export const locations: GymLocation[] = [
     lng: 78.4985516,
     googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=17.5124144,78.4985516",
     phone: "+91 90322 71341",
-    trainerName: "Rajesh"
+    trainerName: "Coaching Team"
   }
 ];
 
@@ -154,15 +154,54 @@ export const programs: Program[] = [
   }
 ];
 
+export interface AlwalTrainer {
+  id: string;
+  role: string;
+  specialization: string;
+  experience: string;
+  image: string;
+}
+
+export const alwalTrainers: AlwalTrainer[] = [
+  {
+    id: "alwal-trainer-1",
+    role: "Certified Fitness Coach",
+    specialization: "Strength & Conditioning",
+    experience: "Certified",
+    image: "/images/trainer_rajesh.jpg"
+  },
+  {
+    id: "alwal-trainer-2",
+    role: "Certified Fitness Coach",
+    specialization: "Functional Training & Hypertrophy",
+    experience: "Certified",
+    image: "/images/trainer_marco.jpg"
+  },
+  {
+    id: "alwal-trainer-3",
+    role: "Certified Fitness Coach",
+    specialization: "Fat Loss & Athletic Conditioning",
+    experience: "Certified",
+    image: "/images/trainer_chandu.jpg"
+  },
+  {
+    id: "alwal-trainer-4",
+    role: "Certified Fitness Coach",
+    specialization: "Powerlifting & Body Transformation",
+    experience: "Certified",
+    image: "/images/trainer_4.jpg"
+  }
+];
+
 export const trainers: Trainer[] = [
   {
-    id: "rajesh",
-    name: "Rajesh",
-    role: "Fitness Trainer",
-    specialization: "Strength & Conditioning",
-    experience: "Pro",
-    bio: "Rajesh brings dedicated coaching expertise to F7 Fitness Alwal. His commitment to member progress and technical training ensures results-driven workouts every session.",
-    image: "/images/trainer_rajesh.jpg",
+    id: "alwal-team",
+    name: "Alwal Coaching Staff",
+    role: "4 Certified Fitness Coaches",
+    specialization: "Strength, Conditioning & Hypertrophy",
+    experience: "Certified Team",
+    bio: "Our dedicated coaching staff at F7 Fitness Alwal. 4 certified trainers delivering structured strength programming, high-intensity fat loss coaching, and biomechanics guidance.",
+    image: "/images/alwal_trainers_collage.jpg",
     phone: "9032271341",
     location: "Alwal"
   },
@@ -173,7 +212,7 @@ export const trainers: Trainer[] = [
     specialization: "Functional Training & Muscle Building",
     experience: "Pro",
     bio: "Marco leads training at the Bolarum Risala branch with high energy and precision. Specializing in functional movement and muscle development for all fitness levels.",
-    image: "/images/trainer_marco.jpg",
+    image: "/images/gym.jpg",
     phone: "6281976965",
     location: "Bolarum Risala"
   },
@@ -184,7 +223,7 @@ export const trainers: Trainer[] = [
     specialization: "Fat Loss & Performance",
     experience: "Pro",
     bio: "Chandu Goud is the go-to trainer at F7 New Bolarum, known for his motivating style and expert programming in fat loss, endurance, and performance training.",
-    image: "/images/trainer_chandu.jpg",
+    image: "/images/team.jpg",
     phone: "9640318855",
     location: "New Bolarum"
   }
@@ -239,24 +278,27 @@ export const membershipPlans: MembershipPlan[] = [
 export const testimonials: Testimonial[] = [
   {
     id: "t1",
-    name: "Vikram Reddy",
+    name: "Premkumar",
     role: "Member since 2024",
-    quote: "F7 has completely changed my perspective on fitness. The focus on compound movements, programming, and coaches' guidance keeps me highly consistent and disciplined.",
-    image: "https://randomuser.me/api/portraits/men/32.jpg"
+    quote: "F7 has completely changed my perspective on fitness. The focus on compound movements, programming, and coaches' guidance keeps me highly consistent and disciplined."
   },
   {
     id: "t2",
-    name: "Sneha Nair",
-    role: "Member since 2025",
-    quote: "The atmosphere here is electric yet serious. There are no gimmicks—just hard training, professional equipment, and a fantastic community that keeps you showing up.",
-    image: "https://randomuser.me/api/portraits/women/44.jpg"
+    name: "Arun",
+    role: "Member since 2024",
+    quote: "The atmosphere here is electric yet serious. There are no gimmicks—just hard training, professional equipment, and a fantastic community that keeps you showing up."
   },
   {
     id: "t3",
-    name: "Abhishek Sen",
+    name: "Karthik",
     role: "Member since 2024",
-    quote: "Prasad Konda’s coaching philosophy is elite. My squat form and deadlift strength have skyrocketed under his direction. If you want results, this is the gym.",
-    image: "https://randomuser.me/api/portraits/men/46.jpg"
+    quote: "Prasad Konda’s coaching philosophy is elite. My squat form and deadlift strength have skyrocketed under his direction. If you want results, this is the gym."
+  },
+  {
+    id: "t4",
+    name: "Mahesh",
+    role: "Member since 2025",
+    quote: "Best training facility in Hyderabad. The coaches pay attention to every rep and ensure you stay injury-free while pushing heavy weights."
   }
 ];
 

@@ -89,7 +89,7 @@ export const Gallery: React.FC = () => {
               <img 
                 src={item.image} 
                 alt={item.title}
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-700 ease-out"
+                className="w-full h-full object-cover group-hover:scale-[1.03] transition-all duration-700 ease-out"
               />
               
               {/* Overlay zoom indicator */}
