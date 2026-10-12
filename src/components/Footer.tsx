@@ -1,15 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
 import { gymDetails, locations } from '../data/gymData';
 
 export const Footer: React.FC = () => {
   const footerLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Programs', href: '#programs' },
-    { name: 'Trainers', href: '#trainers' },
-    { name: 'Membership', href: '#membership' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', to: '/' },
+    { name: 'About', to: '/about' },
+    { name: 'Programs', to: '/programs' },
+    { name: 'Location', to: '/location' },
+    { name: 'Trainers', to: '/trainers' },
+    { name: 'Membership', to: '/membership' },
+    { name: 'Contact', to: '/contact' },
   ];
 
   return (
@@ -21,9 +23,9 @@ export const Footer: React.FC = () => {
           
           {/* Logo column - 5 cols */}
           <div className="md:col-span-5 flex flex-col items-start text-left space-y-6">
-            <a href="#home">
+            <Link to="/">
               <Logo variant="horizontal" height={44} />
-            </a>
+            </Link>
             <p className="font-sans text-brand-neutral/50 text-xs sm:text-sm leading-relaxed max-w-sm">
               Elite strength training and athletic coaching center in Hyderabad. Built for athletes, lifters, and individuals seeking progressive physical improvement.
             </p>
@@ -49,12 +51,12 @@ export const Footer: React.FC = () => {
             <ul className="grid grid-cols-1 gap-3">
               {footerLinks.map((link) => (
                 <li key={link.name}>
-                  <a 
-                    href={link.href}
+                  <Link
+                    to={link.to}
                     className="font-sans text-xs sm:text-sm text-brand-neutral/60 hover:text-white transition-colors uppercase tracking-wider font-semibold"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

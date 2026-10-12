@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const About: React.FC = () => {
   return (
@@ -58,14 +59,14 @@ export const About: React.FC = () => {
 
             {/* Action CTA */}
             <div className="mt-8">
-              <a 
-                href="#programs" 
+              <Link
+                to="/programs"
                 className="group relative inline-flex items-center text-white font-sans font-bold text-sm uppercase tracking-widest hover:text-brand-yellow transition-colors duration-300"
               >
                 <span>DISCOVER F7 FITNESS</span>
                 <span className="ml-2 w-8 h-[1px] bg-white group-hover:bg-brand-yellow group-hover:w-12 transition-all duration-300"></span>
                 <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 ml-1 group-hover:translate-x-1 transition-all duration-300 text-brand-yellow" />
-              </a>
+              </Link>
             </div>
           </div>
           

@@ -1,69 +1,32 @@
 import { Routes, Route } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { WhyF7 } from './components/WhyF7';
-import { Programs } from './components/Programs';
-import { Trainers } from './components/Trainers';
-import { Testimonials } from './components/Testimonials';
-import { Membership } from './components/Membership';
-import { Gallery } from './components/Gallery';
-import { Location } from './components/Location';
-import { Footer } from './components/Footer';
-import { ChatWidget } from './components/ChatWidget';
+import { Layout } from './components/Layout';
+import { ScrollToTop } from './components/ScrollToTop';
+import { HomePage } from './pages/HomePage';
+import { AboutPage } from './pages/AboutPage';
+import { ProgramsPage } from './pages/ProgramsPage';
+import { LocationPage } from './pages/LocationPage';
+import { TrainersPage } from './pages/TrainersPage';
+import { MembershipPage } from './pages/MembershipPage';
+import { ContactPage } from './pages/ContactPage';
 import { AuthPage } from './pages/AuthPage';
-
-function HomePage() {
-  return (
-    <div className="min-h-screen bg-brand-black text-brand-white font-sans selection:bg-brand-yellow selection:text-brand-black">
-      {/* Navigation */}
-      <Navbar />
-
-      {/* Global Scroll Sections Container */}
-      <main>
-        {/* 1. Hero Section */}
-        <Hero />
-
-        {/* 2. About F7 Section */}
-        <About />
-
-        {/* 5. Why F7 core benefits grid */}
-        <WhyF7 />
-
-        {/* 6. Programs Showcase */}
-        <Programs />
-
-        {/* 9. Meet the Trainers Section */}
-        <Trainers />
-
-        {/* 11. Large quote Testimonials */}
-        <Testimonials />
-
-        {/* 12. Membership Plans Tier List */}
-        <Membership />
-
-        {/* 13. Visual Category-filtered Gallery (w/ Lightbox) */}
-        <Gallery />
-
-        {/* 14. Location coordinates and Operating Hours details */}
-        <Location />
-      </main>
-
-      {/* 16. Branded footer */}
-      <Footer />
-
-      {/* Floating Chat Widget */}
-      <ChatWidget />
-    </div>
-  );
-}
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/auth" element={<AuthPage />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/programs" element={<ProgramsPage />} />
+          <Route path="/location" element={<LocationPage />} />
+          <Route path="/trainers" element={<TrainersPage />} />
+          <Route path="/membership" element={<MembershipPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Route>
+        <Route path="/auth" element={<AuthPage />} />
+      </Routes>
+    </>
   );
 }
 

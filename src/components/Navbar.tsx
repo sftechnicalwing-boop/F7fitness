@@ -1,35 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Logo } from './Logo';
 import { gymDetails } from '../data/gymData';
 
+const navLinks = [
+  { name: 'Home', to: '/' },
+  { name: 'About', to: '/about' },
+  { name: 'Programs', to: '/programs' },
+  { name: 'Location', to: '/location' },
+  { name: 'Trainers', to: '/trainers' },
+  { name: 'Membership', to: '/membership' },
+  { name: 'Contact', to: '/contact' },
+];
+
 export const Navbar: React.FC = () => {
+  const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const updateScrolled = (scrollTop: number) => {
+      setScrolled(scrollTop > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const onWindowScroll = () => updateScrolled(window.scrollY);
+    const onSnapScroll = (event: Event) => {
+      updateScrolled((event.currentTarget as HTMLElement).scrollTop);
+    };
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Programs', href: '#programs' },
-    { name: 'Location', href: '#location' },
-    { name: 'Trainers', href: '#trainers' },
-    { name: 'Membership', href: '#membership' },
-    { name: 'Contact', href: '#contact' },
-  ];
+    window.addEventListener('scroll', onWindowScroll);
+    const snap = document.getElementById('home-snap');
+    snap?.addEventListener('scroll', onSnapScroll);
+    updateScrolled(snap?.scrollTop ?? window.scrollY);
+
+    return () => {
+      window.removeEventListener('scroll', onWindowScroll);
+      snap?.removeEventListener('scroll', onSnapScroll);
+    };
+  }, [pathname]);
+
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    `font-sans text-[13px] font-semibold uppercase tracking-wider transition-colors duration-200 ${
+      isActive ? 'text-brand-yellow' : 'text-brand-white/80 hover:text-brand-yellow'
+    }`;
+
+  const mobileLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `font-display font-black text-2xl uppercase tracking-wider transition-colors ${
+      isActive ? 'text-brand-yellow' : 'text-white hover:text-brand-yellow'
+    }`;
 
   return (
     <>
@@ -41,25 +64,23 @@ export const Navbar: React.FC = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo - complete with wordmarks */}
-          <a href="#home" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <Logo variant="horizontal" height={scrolled ? 36 : 44} className="transition-all duration-300" />
-          </a>
+          </Link>
 
-          {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href}
-                className="font-sans text-[13px] font-semibold uppercase tracking-wider text-brand-white/80 hover:text-brand-yellow transition-colors duration-200"
+              <NavLink
+                key={link.name}
+                to={link.to}
+                end={link.to === '/'}
+                className={linkClass}
               >
                 {link.name}
-              </a>
+              </NavLink>
             ))}
           </div>
 
-          {/* Desktop CTA */}
           <div className="hidden lg:block">
             <Link
               to="/auth"
@@ -70,7 +91,6 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile Hamburguer Icon */}
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden text-white hover:text-brand-yellow p-1 transition-colors"
@@ -81,28 +101,26 @@ export const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Drawer Navigation Overlay */}
       <div 
         className={`fixed inset-0 z-30 bg-brand-black border-l border-brand-gray-light lg:hidden transition-transform duration-300 ease-in-out ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className="flex flex-col h-full pt-28 pb-8 px-8">
-          {/* Mobile Links */}
           <div className="flex flex-col gap-6 mb-auto">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href}
+              <NavLink
+                key={link.name}
+                to={link.to}
+                end={link.to === '/'}
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-display font-black text-2xl uppercase tracking-wider text-white hover:text-brand-yellow transition-colors"
+                className={mobileLinkClass}
               >
                 {link.name}
-              </a>
+              </NavLink>
             ))}
           </div>
 
-          {/* Mobile Contact & CTA */}
           <div className="flex flex-col gap-6 border-t border-brand-gray-light pt-8">
             <Link
               to="/auth"
